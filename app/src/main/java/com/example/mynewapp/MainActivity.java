@@ -8,7 +8,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -26,10 +25,8 @@ public class MainActivity extends AppCompatActivity{
 
     private Adapter.RecyclerViewClickListener listener;
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private List<Plants> contacts;
     private Adapter adapter;
-    private ApiInterface apiInterface;
     ProgressBar progressBar;
 
     @Override
@@ -39,20 +36,17 @@ public class MainActivity extends AppCompatActivity{
 
         progressBar = findViewById(R.id.progress);
         recyclerView = findViewById(R.id.recyclerView);
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
         //First call is to search the whole database without keyword
         fetchContact("plants", "");
 
-        //TODO:Korjaa kaikkien hakutulosten näyttäminen "Etsi" nappia painamisen jälkeen
-        //TODO: Create Click event for selected events
-
     }
 
     public void fetchContact(String type, String key) {
-        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<List<Plants>> call = apiInterface.getPlants(key);
         call.enqueue(new Callback<List<Plants>>() {
 

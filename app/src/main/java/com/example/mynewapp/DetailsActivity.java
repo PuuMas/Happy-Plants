@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    public static final String EXTRA_PLANT = "extra_plant";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
