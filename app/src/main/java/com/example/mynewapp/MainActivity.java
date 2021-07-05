@@ -72,6 +72,12 @@ public class MainActivity extends AppCompatActivity{
         listener = (v, position) -> {
             Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
             intent.putExtra("herb_name", contacts.get(position).getHerbName());
+            intent.putExtra("latin_name", contacts.get(position).getLatinName());
+            intent.putExtra("temp", contacts.get(position).getTemp());
+            intent.putExtra("water", contacts.get(position).getWater());
+            intent.putExtra("humidity", contacts.get(position).getHumidity());
+            intent.putExtra("sun", contacts.get(position).getSun());
+            intent.putExtra("ph", contacts.get(position).getPh());
             startActivity(intent);
         };
     }

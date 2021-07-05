@@ -34,42 +34,27 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:textStyle="bold"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:text="Overview"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_name"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
         android:text="Optimal values"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/your_id"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/info"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -88,8 +73,8 @@
         android:id="@+id/tempature_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="temp_set"
         app:layout_constraintStart_toEndOf="@+id/tempature"
@@ -112,8 +97,8 @@
         android:id="@+id/water_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:text="water_set"
         app:layout_constraintStart_toEndOf="@+id/water"
@@ -136,8 +121,8 @@
         android:id="@+id/hum_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:text="hum_set"
         app:layout_constraintStart_toEndOf="@+id/humidity"
@@ -160,8 +145,8 @@
         android:id="@+id/sun_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:text="sun_set"
         app:layout_constraintStart_toEndOf="@+id/sun"
@@ -184,8 +169,8 @@
         android:id="@+id/ph_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:text="ph_set"
         app:layout_constraintStart_toEndOf="@+id/ph"
@@ -196,26 +181,25 @@
         android:id="@+id/your_values"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="Your measured values"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/your_id"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintHorizontal_bias="0.813"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/info"
         tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/your_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="Tempature:"
-        app:layout_constraintStart_toEndOf="@+id/tempature_set"
+        app:layout_constraintStart_toEndOf="@+id/viewAnimator"
         app:layout_constraintTop_toBottomOf="@+id/your_values"
         tools:ignore="HardcodedText" />
 
@@ -330,14 +314,26 @@
     <ViewAnimator
         android:id="@+id/viewAnimator"
         android:layout_width="2dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:background="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sun_set"
-        app:layout_constraintTop_toBottomOf="@+id/info"
+        app:layout_constraintTop_toBottomOf="@+id/your_id"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/your_id"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/viewAnimator"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
