@@ -1,3 +1,3 @@
 # Happy-Plants
-Happy Plants project for Gardening
+Happy Plants project for Gardening.
 Development branch
