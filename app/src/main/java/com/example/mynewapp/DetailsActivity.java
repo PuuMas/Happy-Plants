@@ -31,13 +31,32 @@ public class DetailsActivity extends AppCompatActivity {
         TextView your_ph = findViewById(R.id.your_ph_set);
 
         String plant_name = "Plant name not set";
+        String plant_latin = "Plant latin name not set";
+        Double temp_val = 0.0;
+        String water_set = "Plant water level not set";
+        Double humidity_set = 0.0;
+        String sun_set = "Plant sun value not set";
+        Double ph_set = 0.0;
+
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             plant_name = extras.getString("herb_name");
+            plant_latin = extras.getString("latin_name");
+            temp_val = extras.getDouble("temp");
+            water_set = extras.getString("water");
+            humidity_set = extras.getDouble("humidity");
+            sun_set = extras.getString("sun");
+            ph_set = extras.getDouble("ph");
         }
 
+        info.setText(plant_latin);
         name.setText(plant_name);
+        temp.setText(temp_val.toString());
+        water.setText(water_set);
+        humidity.setText(humidity_set.toString());
+        sun.setText(sun_set);
+        ph.setText(ph_set.toString());
 
     }
 }
