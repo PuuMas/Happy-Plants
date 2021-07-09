@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetailsActivity extends AppCompatActivity {
+import com.squareup.picasso.Picasso;
 
-    public static final String EXTRA_PLANT = "extra_plant";
+public class DetailsActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,47 +16,48 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
 
-        ImageView imageView = findViewById(R.id.image_details);
         TextView name = findViewById(R.id.tv_detail_name);
-        TextView info = findViewById(R.id.info);
+        ImageView imageView = findViewById(R.id.image_details);
+        TextView latin_name_txt = findViewById(R.id.textView2);
         TextView temp = findViewById(R.id.tempature_set);
-        TextView water = findViewById(R.id.water_set);
-        TextView humidity = findViewById(R.id.hum_set);
-        TextView sun = findViewById(R.id.sun_set);
-        TextView ph = findViewById(R.id.ph_set);
-        TextView your_temp = findViewById(R.id.your_temp_set);
-        TextView your_water = findViewById(R.id.your_water_set);
-        TextView your_humidity = findViewById(R.id.your_hum_set);
-        TextView your_sun = findViewById(R.id.your_sun_set);
-        TextView your_ph = findViewById(R.id.your_ph_set);
+        TextView water_txt = findViewById(R.id.water_set);
+        TextView humidity_txt = findViewById(R.id.hum_set);
+        TextView sun_txt = findViewById(R.id.sun_set);
+        TextView ph_txt = findViewById(R.id.ph_set);
 
         String plant_name = "Plant name not set";
-        String plant_latin = "Plant latin name not set";
-        Double temp_val = 0.0;
-        String water_set = "Plant water level not set";
-        Double humidity_set = 0.0;
-        String sun_set = "Plant sun value not set";
-        Double ph_set = 0.0;
+        String latin_name = "Plant latin name not set";
+        String image_path = "Image path not set";
+        int tempInt = 0;
+        String water = "Water level not set";
+        float humidity = 0;
+        String sun = "Sun level not set";
+        float ph = 0;
 
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             plant_name = extras.getString("herb_name");
-            plant_latin = extras.getString("latin_name");
-            temp_val = extras.getDouble("temp");
-            water_set = extras.getString("water");
-            humidity_set = extras.getDouble("humidity");
-            sun_set = extras.getString("sun");
-            ph_set = extras.getDouble("ph");
+            latin_name = extras.getString("latin_name");
+            tempInt = extras.getInt("temp");
+            water = extras.getString("water");
+            humidity = extras.getFloat("humidity");
+            sun = extras.getString("sun");
+            ph = extras.getFloat("ph");
+            image_path = extras.getString("img");
+
+
         }
 
-        info.setText(plant_latin);
         name.setText(plant_name);
-        temp.setText(temp_val.toString());
-        water.setText(water_set);
-        humidity.setText(humidity_set.toString());
-        sun.setText(sun_set);
-        ph.setText(ph_set.toString());
+        latin_name_txt.setText(latin_name);
+        water_txt.setText(water);
+        sun_txt.setText(sun);
+        temp.setText(String.valueOf(tempInt));
+        humidity_txt.setText(String.valueOf(humidity));
+        ph_txt.setText(String.valueOf(ph));
 
+        //Load the images from URL to imageview
+        Picasso.get().load(image_path).into(imageView);
     }
 }

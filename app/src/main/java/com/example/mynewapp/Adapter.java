@@ -8,21 +8,17 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
-    private RecyclerViewClickListener listener;
+    private final RecyclerViewClickListener listener;
 
-    private List<Plants> plants;
-    private Context context;
+    private final List<Plants> plants;
 
 
     public Adapter(List<Plants> plants, Context context,RecyclerViewClickListener listener) {
         this.plants = plants;
-        this.context = context;
         this.listener = listener;
     }
 

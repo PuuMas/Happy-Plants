@@ -3,15 +3,20 @@ package com.example.mynewapp;
 import com.google.gson.annotations.SerializedName;
 
 public class Plants {
-    @SerializedName("id") private int Id;
+    @SerializedName("Id") private int Id;
     @SerializedName("herb_name") private String herbName;
     @SerializedName("latin_name") private String latinName;
-    @SerializedName("temp") private double temp;
+    @SerializedName("temp") private int temp;
     @SerializedName("water") private String water;
-    @SerializedName("humidity") private double humidity;
+    @SerializedName("humidity") private Float humidity;
     @SerializedName("sun") private String sun;
-    @SerializedName("ph") private double ph;
+    @SerializedName("ph") private Float ph;
+    @SerializedName("img_location") private String img;
 
+
+    public String getImg() {
+        return img;
+    }
     public int getId() {
         return Id;
     }
@@ -24,7 +29,7 @@ public class Plants {
         return latinName;
     }
 
-    public double getTemp() {
+    public int getTemp() {
         return temp;
     }
 
@@ -32,7 +37,7 @@ public class Plants {
         return water;
     }
 
-    public double getHumidity() {
+    public Float getHumidity() {
         return humidity;
     }
 
@@ -40,7 +45,7 @@ public class Plants {
         return sun;
     }
 
-    public double getPh() {
+    public Float getPh() {
         return ph;
     }
 }
