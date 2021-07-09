@@ -11,7 +11,12 @@ public class Plants {
     @SerializedName("humidity") private Float humidity;
     @SerializedName("sun") private String sun;
     @SerializedName("ph") private Float ph;
+    @SerializedName("img_location") private String img;
 
+
+    public String getImg() {
+        return img;
+    }
     public int getId() {
         return Id;
     }

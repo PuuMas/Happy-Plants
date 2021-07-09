@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity{
 
         //First call is to search the whole database without keyword
         fetchContact("plants", "");
-
     }
 
     public void fetchContact(String type, String key) {
@@ -78,6 +77,7 @@ public class MainActivity extends AppCompatActivity{
             intent.putExtra("humidity", contacts.get(position).getHumidity());
             intent.putExtra("sun", contacts.get(position).getSun());
             intent.putExtra("ph", contacts.get(position).getPh());
+            intent.putExtra("img", contacts.get(position).getImg());
             startActivity(intent);
         };
     }

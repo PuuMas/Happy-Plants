@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetailsActivity extends AppCompatActivity {
+import com.squareup.picasso.Picasso;
+
+public class DetailsActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,22 +16,18 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
 
-        ImageView imageView = findViewById(R.id.image_details);
         TextView name = findViewById(R.id.tv_detail_name);
+        ImageView imageView = findViewById(R.id.image_details);
         TextView latin_name_txt = findViewById(R.id.textView2);
         TextView temp = findViewById(R.id.tempature_set);
         TextView water_txt = findViewById(R.id.water_set);
         TextView humidity_txt = findViewById(R.id.hum_set);
         TextView sun_txt = findViewById(R.id.sun_set);
         TextView ph_txt = findViewById(R.id.ph_set);
-        TextView your_temp = findViewById(R.id.your_temp_set);
-        TextView your_water = findViewById(R.id.your_water_set);
-        TextView your_humidity = findViewById(R.id.your_hum_set);
-        TextView your_sun = findViewById(R.id.your_sun_set);
-        TextView your_ph = findViewById(R.id.your_ph_set);
 
         String plant_name = "Plant name not set";
         String latin_name = "Plant latin name not set";
+        String image_path = "Image path not set";
         int tempInt = 0;
         String water = "Water level not set";
         float humidity = 0;
@@ -46,6 +44,8 @@ public class DetailsActivity extends AppCompatActivity {
             humidity = extras.getFloat("humidity");
             sun = extras.getString("sun");
             ph = extras.getFloat("ph");
+            image_path = extras.getString("img");
+
 
         }
 
@@ -57,5 +57,7 @@ public class DetailsActivity extends AppCompatActivity {
         humidity_txt.setText(String.valueOf(humidity));
         ph_txt.setText(String.valueOf(ph));
 
+        //Load the images from URL to imageview
+        Picasso.get().load(image_path).into(imageView);
     }
 }
