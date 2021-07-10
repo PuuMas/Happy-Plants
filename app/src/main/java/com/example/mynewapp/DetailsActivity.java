@@ -2,9 +2,14 @@ package com.example.mynewapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -58,5 +63,17 @@ public class DetailsActivity extends AppCompatActivity{
 
         //Load the images from URL to imageview
         Glide.with(this).load(image_path).into(imageView);
+
+    }
+
+    //TODO: Here we should create the method that gets plants measure values!
+    public void getValues(View view){
+
+        Context context = getApplicationContext();
+        CharSequence text = "Loading the values...";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
