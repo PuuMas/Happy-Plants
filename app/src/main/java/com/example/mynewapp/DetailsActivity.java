@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 public class DetailsActivity extends AppCompatActivity{
 
@@ -46,7 +46,6 @@ public class DetailsActivity extends AppCompatActivity{
             ph = extras.getFloat("ph");
             image_path = extras.getString("img");
 
-
         }
 
         name.setText(plant_name);
@@ -58,6 +57,6 @@ public class DetailsActivity extends AppCompatActivity{
         ph_txt.setText(String.valueOf(ph));
 
         //Load the images from URL to imageview
-        Picasso.get().load(image_path).into(imageView);
+        Glide.with(this).load(image_path).into(imageView);
     }
 }
