@@ -2,8 +2,6 @@ package com.example.mynewapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +11,17 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class DetailsActivity extends AppCompatActivity{
+
+    private List<DataValues> values;
+    private Adapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity{
         TextView humidity_txt = findViewById(R.id.hum_set);
         TextView sun_txt = findViewById(R.id.sun_set);
         TextView ph_txt = findViewById(R.id.ph_set);
+
 
         String plant_name = "Plant name not set";
         String latin_name = "Plant latin name not set";
@@ -72,8 +81,38 @@ public class DetailsActivity extends AppCompatActivity{
         Context context = getApplicationContext();
         CharSequence text = "Loading the values...";
         int duration = Toast.LENGTH_SHORT;
+        //Get the JSON data from URL
+        fetchContact("runscript","runscript");
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+
+    }
+
+    public void fetchContact(String type, String key) {
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<DataValues>> call = apiInterface.getDataValues(key);
+        call.enqueue(new Callback<List<DataValues>>() {
+
+            @Override
+            public void onResponse(Call<List<DataValues>> call, Response<List<DataValues>> response) {
+                values = response.body();
+                TextView tempGet = findViewById(R.id.your_temp_set);
+                TextView water_Get = findViewById(R.id.your_water_set);
+                TextView humidity_Get = findViewById(R.id.your_hum_set);
+                TextView sun_Get = findViewById(R.id.your_sun_set);
+
+                water_Get.setText(values.get(0).getWater());
+                sun_Get.setText(values.get(0).getSun());
+                tempGet.setText(values.get(0).getTempature());
+                humidity_Get.setText(values.get(0).getHumidity());
+            }
+
+            @Override
+            public void onFailure(Call<List<DataValues>> call, Throwable t) {
+                Toast.makeText(DetailsActivity.this, "Something went wrong\n" + "Please try calculating again", Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }

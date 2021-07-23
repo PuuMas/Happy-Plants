@@ -10,4 +10,7 @@ public interface ApiInterface {
     @GET("plants/{name}")
     Call < List<Plants> > getPlants (@Path("name") String name);
 
+    @GET("/{name}")
+    Call < List<DataValues> > getDataValues (@Path("name") String name);
+
 }
