@@ -75,13 +75,14 @@ public class DetailsActivity extends AppCompatActivity{
 
     }
 
-    //TODO: Here we should create the method that gets plants measure values!
+    //Method for getting the values from IOT device
     public void getValues(View view){
 
         Context context = getApplicationContext();
         CharSequence text = "Loading the values...";
         int duration = Toast.LENGTH_SHORT;
-        //Get the JSON data from URL
+
+        //Get the JSON data from URL with "runscript" keyword
         fetchContact("runscript","runscript");
 
         Toast toast = Toast.makeText(context, text, duration);
@@ -89,6 +90,7 @@ public class DetailsActivity extends AppCompatActivity{
 
     }
 
+    //Fetch the plant info from IOT device
     public void fetchContact(String type, String key) {
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<List<DataValues>> call = apiInterface.getDataValues(key);

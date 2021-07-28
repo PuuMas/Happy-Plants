@@ -40,10 +40,11 @@ public class MainActivity extends AppCompatActivity{
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        //First call is to search the whole database without keyword
+        //First call is to search the whole database without a keyword
         fetchContact("plants", "");
     }
 
+    //Fetch the content from the server
     public void fetchContact(String type, String key) {
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<List<Plants>> call = apiInterface.getPlants(key);
@@ -51,12 +52,12 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onResponse(Call<List<Plants>> call, Response<List<Plants>> response) {
-                setOnClickListener();
                 progressBar.setVisibility(View.GONE);
                 contacts = response.body();
                 adapter = new Adapter(contacts,MainActivity.this,listener);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+                setOnClickListener();
             }
 
             @Override
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
+    //Send the data to the DetailsActivity
     private void setOnClickListener() {
         listener = (v, position) -> {
             Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
@@ -82,6 +84,8 @@ public class MainActivity extends AppCompatActivity{
         };
     }
 
+
+    //Create the OnMenu option with the searchbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
